@@ -4,20 +4,21 @@ import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { NotesDataContext } from './context/NotesContext'
+import { sub } from "date-fns"
 
 const Edit = () => {
     const params = useParams()
+
+    let {data,setData}=useContext(NotesDataContext)
+
     let [title,setTitle]=useState("")
     let [notes,setNotes]=useState("")
 
     let navigate = useNavigate()
 
-    let {data,setData}=useContext(NotesDataContext)
-  
     const getData = (index)=>{
         setTitle(data[index].title)
         setNotes(data[index].notes)
-      
       }
     
     
@@ -28,7 +29,7 @@ const Edit = () => {
         }
         else
         {
-          navigate(<Notes/>)
+          navigate("/")
         }
       },[])
     
@@ -36,10 +37,11 @@ const Edit = () => {
         let newArray = [...data]
         newArray.splice(Number(params.id),1,{
          title,
-         notes
+         notes,
+         date: sub(new Date(), { minutes: 0 }).toISOString()
         })
         setData(newArray)
-        navigate(<Notes/>)
+        navigate("/")
     }
   return<>
   <div className='notes-editor p-4' style={
@@ -48,8 +50,8 @@ const Edit = () => {
         width:'700px'
     }}>
 
-      <h2>Add a Note</h2>
-        <Form>
+      <h2>Edit a Note</h2>
+        <Form onSubmit={handleEdit}>
           <Form.Group>
               <Form.Control type="text" value={title} placeholder="Title" className='title' onChange={(e)=>setTitle(e.target.value)}/>
           </Form.Group>
@@ -57,12 +59,9 @@ const Edit = () => {
           <Form.Group>
               <Form.Control as="textarea" required type="textarea" value={notes} placeholder="Take a note..." className='note-area' onChange={(e)=>setNotes(e.target.value)} />
           </Form.Group>
-          <Button type="submit"  onClick={handleEdit}>Submit</Button>
+          <Button onClick={handleEdit}>Update</Button>
         </Form>
-       
-        
-  </div>
-  
+  </div>  
   </>
 }
 

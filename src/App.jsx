@@ -19,7 +19,7 @@ function App() {
                     <Notes/>  
                 </div>     
             }/>
-            <Route path='/edit' element={<Edit/>}/>
+            <Route path='/edit/:id' element={<Edit/>}/>
         </Routes>
     </BrowserRouter>
   </div>

@@ -2,9 +2,7 @@ import React, { useContext } from 'react'
 import { NotesDataContext } from './context/NotesContext'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import NotesEditor from './NotesEditor';
-import Edit from './Edit';
-
+import TimeAgo from './TimeAgo';
 
 const Notes = () => {
     let {data,setData}=useContext(NotesDataContext)
@@ -27,14 +25,14 @@ const Notes = () => {
   {
     
     data.map((e,i)=>{
-        return <div className='note py-3 px-3 mx-3 my-3'>
+        return <div className='note py-3 px-3 mx-3 my-3' key={i}>
         
-                    <div key={i}>
+                    
                         <div className='header'>
                             <h2>{e.title}</h2>
                             <div className='edit-delete'>
                                 <Button className='edit-btn' onClick={()=>{
-                            navigate(<Edit/>)
+                             navigate(`/edit/${i}`)
                         }}>
                                     <i className="fa-sharp fa-solid fa-pen"></i>
                                 </Button>
@@ -49,9 +47,9 @@ const Notes = () => {
                             <p>{e.notes}</p>
                         </div>
                         <div className='footer'>
-                            <small>5 days ago</small>
+                        <TimeAgo timeStamp={e.date} />
                         </div>
-                    </div>    
+                       
                 </div>
 })
  }
