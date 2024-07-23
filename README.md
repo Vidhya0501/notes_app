@@ -1,4 +1,7 @@
 Notes App using Router and Context API
+
+![Uploading image.png…]()
+
 - It's a Notes App developed using Routing and Context API in REACT JS.
 - In the sidebar we'have just name of the app "Notes APP" and link to main page, that is, "Notes".
 - In main page we'have form like structure with one textfield for title and one textarea for
@@ -8,4 +11,4 @@ Notes App using Router and Context API
 - We also provide "Edit" and "Delete" icons as buttons.
 - User can edit and delete the already created data by clicking those icon buttons.
   
-![Uploading image.png…]()
+
