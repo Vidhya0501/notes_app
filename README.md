@@ -1,6 +1,5 @@
 Notes App using Router and Context API
 
-![Uploading image.png…]()
 
 - It's a Notes App developed using Routing and Context API in REACT JS.
 - In the sidebar we'have just name of the app "Notes APP" and link to main page, that is, "Notes".
