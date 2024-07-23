@@ -7,4 +7,5 @@ Notes App using Router and Context API
 - All the notes will be displayed in order by recently added.
 - We also provide "Edit" and "Delete" icons as buttons.
 - User can edit and delete the already created data by clicking those icon buttons.
+  
 ![Uploading image.png…]()
